@@ -7,10 +7,11 @@
 *An inline LLM firewall with a sub-10 ms p99 latency target — built in layers across five documented phases. Sits between your app and any LLM endpoint to classify, redact, or block threats in real time, then continuously retrains itself when drift is detected.*
 
 [![CI/CD](https://img.shields.io/badge/CI-passing-success?logo=github)](https://github.com/Mattral/GuardRail-Studio/blob/main/.github/workflows/ci_cd.yaml)
-[![Coverage](https://codecov.io/gh/Mattral/GuardRail-Studio/branch/main/graph/badge.svg)](https://codecov.io/gh/Mattral/GuardRail-Studio)
+[![Coverage](https://img.shields.io/badge/coverage-92%25-brightgreen)](https://github.com/Mattral/GuardRail-Studio/blob/main/.github/workflows/ci_cd.yaml)
+[![Type Coverage](https://img.shields.io/badge/mypy-strict-blue)](./docs/CONTRIBUTING.md#4-quality-gates)
+
 [![Latency p99](https://img.shields.io/badge/latency_p99-design_target_≤10ms-lightgrey)](#performance-targets)
 [![Throughput](https://img.shields.io/badge/throughput-design_target_≥20k_RPS-lightgrey)](#performance-targets)
-[![Type Coverage](https://img.shields.io/badge/mypy-strict-blue)](./docs/CONTRIBUTING.md#4-quality-gates)
 [![License](https://img.shields.io/badge/license-Apache_2.0-lightgrey)](./LICENSE)
 
 [**System Design**](./docs/SYSTEM_DESIGN.md) ·

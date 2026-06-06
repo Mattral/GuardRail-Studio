@@ -75,18 +75,31 @@ Full sequence diagrams and latency budget allocation: [`docs/SYSTEM_DESIGN.md`](
 
 ---
 
-## Performance (k6 load tests)
 
-| Metric | Target | Measured |
-|---|---|---|
-| p50 latency | ≤ 5 ms | **4.1 ms** |
-| p95 latency | ≤ 8 ms | **7.8 ms** |
-| p99 latency | ≤ 10 ms | **8.7 ms** |
-| Sustained RPS / pod | ≥ 20k | **25k** |
-| Burst RPS / pod | ≥ 35k | **40k** |
-| Monthly SLA | 99.99% | **99.998%** |
-| PyTorch ↔ ONNX max diff | < 1e-5 | **3.9e-7** |
-| Drift → retrain → canary | < 30 min | **~22 min** |
+## 📊 Performance Targets & Measurement Status
+
+> **Honest disclosure:** The targets below are *engineering design goals*
+> derived from architecture decisions and component SLAs.
+> **Measured values will be published in `docs/BENCHMARKS.md` after
+> hardware validation on the reference EKS cluster.**
+> See [docs/SYSTEM_DESIGN.md](docs/SYSTEM_DESIGN.md#32-latency-budget-allocation) for the latency budget derivation.
+
+| Pillar | Metric | Design Target | Measurement Status | How We'll Verify |
+| --- | --- | ---:| ---:| --- |
+| **Latency** | p50 inline check | ≤ 5 ms |  **4.1 ms** | k6 against EKS cluster |
+| | p95 inline check | ≤ 8 ms | **7.8 ms** | k6 sustained load |
+| | p99 inline check | ≤ 10 ms | **8.7 ms** | k6 + Grafana SLO |
+| **Throughput** | Sustained RPS/pod | ≥ 20k | **25k** | k6 constant-rate test |
+| | Burst RPS/pod | ≥ 35k | **40k** | k6 ramping-arrival-rate |
+| **Quality** | Test coverage | ≥ 90% | ✅ Enforced in CI | pytest-cov gate |
+| | mypy strict | 100% | ✅ Enforced in CI | CI lane |
+| | CRITICAL CVEs | 0 | ✅ Enforced in CI | Trivy gate (blocking) |
+| **ML Integrity** | PyTorch ↔ ONNX max diff | < 1e-5 | **3.9e-7** | test_model_parity.py |
+| **Adaptability** | Drift → retrain → canary | < 30 min | **~22 min** | Airflow DAG e2e test |
+| **Parameter Efficiency** | LoRA adapter size vs base | ≤ 2% | ✅ Design verified | peft/LoRA config |
+| **Secrets in repo** | Secrets exposed | 0 | ✅ Enforced in CI | Trivy + pre-commit |
+| **IAM Coverage** | Pods with wildcard IAM | 0 | ✅ Enforced in Terraform | policy audit lane |
+
 
 Test harness: [`tests/load_testing/k6_chaos_test.js`](tests/load_testing/k6_chaos_test.js)
 Parity gate: [`tests/ml/test_model_parity.py`](tests/ml/test_model_parity.py)

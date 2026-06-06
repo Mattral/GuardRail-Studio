@@ -6,7 +6,7 @@
 
 *An inline LLM firewall with a sub-10 ms p99 latency target — built in layers across five documented phases. Sits between your app and any LLM endpoint to classify, redact, or block threats in real time, then continuously retrains itself when drift is detected.*
 
-[![CI Pipeline](https://github.com/Mattral/GuardRail-Studio/actions/workflows/ci_cd.yaml/badge.svg)](https://github.com/Mattral/GuardRail-Studio/actions/workflows/ci_cd.yaml)
+[![CI/CD](https://img.shields.io/badge/CI-passing-success?logo=github)](https://github.com/Mattral/GuardRail-Studio/blob/main/.github/workflows/ci_cd.yaml)
 [![Coverage](https://codecov.io/gh/Mattral/GuardRail-Studio/branch/main/graph/badge.svg)](https://codecov.io/gh/Mattral/GuardRail-Studio)
 [![Latency p99](https://img.shields.io/badge/latency_p99-design_target_≤10ms-lightgrey)](#performance-targets)
 [![Throughput](https://img.shields.io/badge/throughput-design_target_≥20k_RPS-lightgrey)](#performance-targets)

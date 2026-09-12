@@ -1,16 +1,27 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "@/components/Dashboard";
+import Layout from "@/components/Layout";
+import Overview from "@/pages/Overview";
+import TestConsole from "@/pages/TestConsole";
+import PolicyEditor from "@/pages/PolicyEditor";
+import AuditLog from "@/pages/AuditLog";
+import Settings from "@/pages/Settings";
+import { Toaster } from "@/components/ui/sonner";
 import "@/App.css";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <Layout>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Overview />} />
+          <Route path="/test" element={<TestConsole />} />
+          <Route path="/policy" element={<PolicyEditor />} />
+          <Route path="/audit" element={<AuditLog />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </Layout>
+      <Toaster position="top-right" />
+    </BrowserRouter>
   );
 }
 

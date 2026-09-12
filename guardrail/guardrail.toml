@@ -1,0 +1,62 @@
+[server]
+host = "127.0.0.1"
+port = 8080
+workers = 0
+max_body_size_bytes = 10485760
+
+[upstream]
+url = "http://127.0.0.1:9000"
+timeout_secs = 30
+
+[auth]
+require_key = false
+
+[pipeline]
+request_stages = ["regex_injection", "pii_redactor", "policy"]
+response_stages = ["output_pii_redactor"]
+on_error = "allow"
+
+[stages.regex_injection]
+enabled = true
+action = "block"
+
+[stages.pii_redactor]
+enabled = true
+entities = ["email", "phone", "credit_card", "ssn", "ip_address", "api_key", "aws_key"]
+action = "redact"
+validate_luhn = true
+
+[stages.pii_redactor.replacements]
+email = "[EMAIL]"
+phone = "[PHONE]"
+credit_card = "[CARD]"
+ssn = "[SSN]"
+ip_address = "[IP_ADDRESS]"
+api_key = "[API_KEY]"
+aws_key = "[AWS_KEY]"
+
+[stages.toxicity]
+enabled = false
+threshold = 0.9
+action = "block"
+scan_roles = ["user"]
+
+[observability]
+log_level = "info"
+log_format = "pretty"
+metrics_port = 9090
+
+[observability.audit_log]
+enabled = true
+path = "/app/guardrail/guardrail-audit.ndjson"
+
+[[policy.rules]]
+name = "block-test-competitor"
+enabled = true
+
+[policy.rules.when]
+content_contains = ["testcompetitorxyz"]
+
+[policy.rules.then]
+action = "block"
+message = ""

@@ -1,9 +1,9 @@
 accelerate==1.13.0
 aiohappyeyeballs==2.6.2
 aiohttp==3.13.5
+aiokafka==0.11.0
 aiosignal==1.4.0
 aiosqlite==0.19.0
-aiokafka==0.11.0
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.13.0
@@ -33,6 +33,7 @@ docker-pycreds==0.4.0
 ecdsa==0.19.2
 email-validator==2.3.0
 emergentintegrations==0.1.2
+execnet==2.1.2
 fastapi==0.110.1
 fastuuid==0.14.0
 filelock==3.29.0
@@ -106,6 +107,7 @@ pillow==12.2.0
 platformdirs==4.10.0
 pluggy==1.6.0
 portalocker==2.10.1
+prometheus_client==0.26.0
 propcache==0.5.2
 proto-plus==1.28.0
 protobuf==3.20.3
@@ -125,6 +127,7 @@ PyJWT==2.13.0
 pymongo==4.5.0
 pyparsing==3.3.2
 pytest==9.0.3
+pytest-xdist==3.8.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.2
 python-jose==3.5.0
@@ -162,6 +165,7 @@ tenacity==9.1.4
 threadpoolctl==3.6.0
 tiktoken==0.13.0
 tokenizers==0.15.2
+tomlkit==0.15.1
 toolz==1.1.0
 torch==2.1.2
 tornado==6.5.6

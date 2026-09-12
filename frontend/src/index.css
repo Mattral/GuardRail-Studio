@@ -44,6 +44,22 @@ code {
         --chart-4: 43 74% 66%;
         --chart-5: 27 87% 67%;
         --radius: 0.5rem;
+
+        /* GuardRail Studio decision + code tokens */
+        --gr-allow: 152 60% 38%;
+        --gr-redact: 36 90% 45%;
+        --gr-block: 0 75% 45%;
+        --gr-allow-bg: 152 55% 92%;
+        --gr-redact-bg: 42 95% 92%;
+        --gr-block-bg: 0 85% 94%;
+        --gr-allow-border: 152 45% 78%;
+        --gr-redact-border: 40 90% 78%;
+        --gr-block-border: 0 80% 82%;
+        --gr-code-bg: 210 40% 96%;
+        --gr-code-border: 214 32% 91%;
+        --gr-focus: 221 83% 53%;
+        --gr-accent: 221 83% 53%;
+        --radius-lg: 0.75rem;
     }
     .dark {
         --background: 0 0% 3.9%;
